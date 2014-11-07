@@ -17,7 +17,6 @@
 			}
 
 		</style>
-	<script src="js/validateForm.js"></script>	
 	</head>
 	<body>
 	
@@ -25,7 +24,17 @@
 			<a class="navbar-brand" href="#">Register Here</a>
 	</nav>
 	
-
+	<div id="credentials_error" class="error">
+			<% 
+			   String message = (String) session.getAttribute("message");
+			   session.removeAttribute("message");
+			
+			 if (message != null) {  //Close if bracket
+			%>
+			 <%= message  %>
+			<% }%>
+			
+		</div>
 	
 		<form name="registration" onsubmit="return validateForm()" action="register" method="POST">
 		<div class="form-div">

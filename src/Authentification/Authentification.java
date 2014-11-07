@@ -35,7 +35,6 @@ public class Authentification {
 
 	public static boolean register(String username, String name, String surname, String password, String tenant, String email, String token) {
 	
-		
 		String query = "INSERT INTO client (Username, Name, Surname, Password, Tenant, Email, Token) Values (?, ?, ?, ?, ?, ?, ?)";
 	
 		try{
@@ -57,8 +56,30 @@ public class Authentification {
 			System.out.println(ex);
 		}
 		
+		return true;
+	}
+	
+	public static boolean userExists (String username){
 		
+		QueryExecutor qe = new QueryExecutor();
+		
+		String query = "SELECT * FROM client WHERE Username='" + username + "'";
+		ResultSet rs = null;
+		
+		try{
+			rs = qe.executeQuery(query);
+			if(rs.next()){
+				return true;
+			}
+			
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+	
 		return false;
 	}
+	
+	
+	
 	
 }

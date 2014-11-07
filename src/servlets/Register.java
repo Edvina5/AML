@@ -45,23 +45,30 @@ public class Register extends HttpServlet {
 		String email = request.getParameter("email");
 		String token = UUID.randomUUID().toString();
 		
-		try{
-			if(Authentification.register(username, name, surname, password, tenant, email, token)){
-				String message = "You have registered successfully! You can log in now!";
-				session.setAttribute("message", message);
-				response.sendRedirect("index.jsp");
-			}
-			else{
-				System.out.println("Something is wrong!");
-				String message = "You have registered successfully! You can log in now!";
-				session.setAttribute("message", message);
-				response.sendRedirect("index.jsp");
-			}
+		if(username.isEmpty() || name.isEmpty() || surname.isEmpty() || password.isEmpty() || tenant.isEmpty() || email.isEmpty()){
+			String message = "Please fill out all fields";
+			session.setAttribute("message", message);
+			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+			response.sendRedirect("registration.jsp");
+		}
+		else{
 		
+		try{
+			if(Authentification.userExists(username)){
+				String message = "This user already exists! Pick different user name!";
+				session.setAttribute("message", message);
+				response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+				response.sendRedirect("registration.jsp");
+			}else if(Authentification.register(username, name, surname, password, tenant, email, token)){
+				String message = "You have registered successfully! You can log in now!";
+				session.setAttribute("message", message);
+				response.sendRedirect("index.jsp");
+			}
 		
 			
 		}catch(Exception ex){
 			System.out.println(ex);
+			}
 		}
 		
 	}
