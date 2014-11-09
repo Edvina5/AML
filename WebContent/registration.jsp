@@ -6,17 +6,9 @@
 		<meta charset="ISO-8859-1">
 		<title>Register Here</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/all_pages.css" rel="stylesheet">
 		
-		<style type="text/css">
-				.form-div {
-				width: 400px;
-				margin: 0 auto;
-				}
-			body {
-			background-image:url('css/background.jpg');
-			}
-
-		</style>
+	
 	</head>
 	<body>
 	
@@ -34,9 +26,9 @@
 			 <%= message  %>
 			<% }%>
 			
-		</div>
+	</div>
 	
-		<form name="registration" onsubmit="return validateForm()" action="register" method="POST">
+		<form name="registration" action="register" method="POST">
 		<div class="form-div">
 			<div class="form-group" >
 				<label>Enter your user name:</label>

@@ -38,6 +38,8 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String group = request.getParameter("Group");
+		
+		//Check if login fields are not empty
 		if(username.isEmpty() || password.isEmpty()) {
 			String message = "Please enter username and password";
 			session.setAttribute("message", message);
@@ -48,8 +50,9 @@ public class Login extends HttpServlet {
 			
 			try {
 				if(Authentification.hasLogin(username, password, group)) {
-					//Got to next page
-					// response.sendRedirect('nextPage');
+					 String welcome_msg = "Hello " + username + " !" ;
+					 session.setAttribute("welcome_msg", welcome_msg);
+					 response.sendRedirect("regularUser.jsp");
 				}
 				else {
 					//Return HTTP error 401 - authentification failed.

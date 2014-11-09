@@ -6,18 +6,10 @@
 		<meta charset="ISO-8859-1">
 		<title>Log in</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/all_pages.css" rel="stylesheet">
 		<script src="js/jquery-1.11.1.js"></script>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<style type="text/css">
-				.form-div {
-				width: 400px;
-				margin: 0 auto;
-				}
-			body {
-			background-image:url('css/background.jpg');
-			}
 
-		</style>
 	</head>
 	<body>
 		<nav class="navbar navbar-default" role="navigation">

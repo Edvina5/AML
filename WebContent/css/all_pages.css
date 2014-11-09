@@ -1,0 +1,23 @@
+@CHARSET "ISO-8859-1";
+
+
+
+.form-div {
+	width: 400px;
+	margin: 0 auto;
+}
+
+.user-form {
+	width: 400px;
+	margin-left: 40px;
+}
+
+.button {
+  float: right;
+  margin-top: -38px;
+}
+
+
+body {
+	background-image:url('background.jpg');
+}
