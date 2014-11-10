@@ -14,5 +14,7 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Users/Edvinas/Documents/Project/Libraries/mysql-connector-java-3.1.14/mysql-connector-java-3.1.14-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Edvinas/Documents/Project/Libraries/weka-3.7.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Edvinas/Documents/Project/Libraries/som/SelfOrganizingMap.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
