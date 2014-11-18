@@ -33,9 +33,9 @@ public class Authentification {
 	 * @return
 	 */
 
-	public static boolean register(String username, String name, String surname, String password, String tenant, String email, String token) {
+	public static boolean register(String username, String name, String surname, String password, String tenant, String email) {
 	
-		String query = "INSERT INTO client (Username, Name, Surname, Password, Tenant, Email, Token) Values (?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO client (Username, Name, Surname, Password, Tenant, Email) Values (?, ?, ?, ?, ?, ?)";
 	
 		try{
 			
@@ -46,7 +46,6 @@ public class Authentification {
 			prp.setString(4, password);
 			prp.setString(5, tenant);
 			prp.setString(6, email);
-			prp.setString(7, token);
 			
 			prp.execute();
 			
@@ -77,6 +76,28 @@ public class Authentification {
 		}
 	
 		return false;
+	}
+	
+	public String getTable(String username){
+		
+		String table = "";
+		
+		QueryExecutor qe = new QueryExecutor();
+		
+		String query = "SELECT Table_name FROM client WHERE Username='" + username + "'";
+		ResultSet rs = null;
+		
+		try{
+			rs = qe.executeQuery(query);
+			if(rs.next()){
+				table = rs.getString(1);
+			}
+			
+		}catch(Exception ex){
+			System.out.println(ex);
+		}
+		
+		return table;
 	}
 	
 	

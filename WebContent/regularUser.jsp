@@ -16,9 +16,8 @@
 			<div id="credentials_error" class="error">
 			<% 
 			   String message = (String) session.getAttribute("welcome_msg");
-			   session.removeAttribute("welcome_msg");
 			
-			 if (message != null) {  //Close if bracket
+			 if (message != null) {  
 			%>
 			 <%= message  %>
 			<% }%>
@@ -36,7 +35,7 @@
 </nav>
 	
 			<div class="user-form">
-				<form name="userPage" id="userPage" action="customer_data" method="POST">
+				<form name="userPage" id="userPage" action="filltable" method="POST">
 					<label>Enter custumer ID:</label>
 					<input class="form-control" type="text" name="customer"> <br>
 					<button id="search" type="submit" class="btn btn-default">Search for transactions</button>
@@ -47,6 +46,9 @@
 		<div id="data-table" class="table">
 			
 			<!-- Table where customer transactions will be displayed -->
+			
+			
+			
 		</div>
 		
 		<div class="user-form">

@@ -52,6 +52,7 @@ public class Login extends HttpServlet {
 				if(Authentification.hasLogin(username, password, group)) {
 					 String welcome_msg = "Hello " + username + " !" ;
 					 session.setAttribute("welcome_msg", welcome_msg);
+					 request.setAttribute("username", username);
 					 response.sendRedirect("regularUser.jsp");
 				}
 				else {

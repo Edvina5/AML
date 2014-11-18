@@ -43,7 +43,7 @@ public class Register extends HttpServlet {
 		String password = request.getParameter("password");
 		String tenant = request.getParameter("tenant").toUpperCase();
 		String email = request.getParameter("email");
-		String token = UUID.randomUUID().toString();
+	
 		
 		if(username.isEmpty() || name.isEmpty() || surname.isEmpty() || password.isEmpty() || tenant.isEmpty() || email.isEmpty()){
 			String message = "Please fill out all fields";
@@ -59,7 +59,7 @@ public class Register extends HttpServlet {
 				session.setAttribute("message", message);
 				response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 				response.sendRedirect("registration.jsp");
-			}else if(Authentification.register(username, name, surname, password, tenant, email, token)){
+			}else if(Authentification.register(username, name, surname, password, tenant, email)){
 				String message = "You have registered successfully! You can log in now!";
 				session.setAttribute("message", message);
 				response.sendRedirect("index.jsp");
