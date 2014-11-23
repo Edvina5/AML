@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Util.FinancialData;
 import Authentification.Authentification;
 import DB.QueryExecutor;
 
@@ -36,28 +37,30 @@ public class FillTable extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		
+		FinancialData fd = new FinancialData();
 		
 		String customer_id = request.getParameter("customer");  //cid from table_01
 		String message = (String) session.getAttribute("welcome_msg");
 		String username = message.substring(6).replace(" !", "");     //to get the username for the table query
-		String table = "";
+		String table_name = "";
 		
 		//System.out.println(username);
 		
-		Authentification au = new Authentification(); 
-		table = au.getTable(username);
 		
-		//System.out.println(table);
+		table_name = fd.getTable(username);
+		
+		
 		
 		if(customer_id.isEmpty()){
 			response.sendRedirect("regularUser.jsp");
-		}else{
-			try{
-				
-			}catch(Exception ex){
-				System.out.println(ex);
-			}
+			System.out.println("You haven't entered customer ID");  //Print this message later
+		}else if(!customer_id.matches("-?\\d+(\\.\\d+)?")){         //check if customer id is a digit 
+			System.out.println("You must enter a digit!");			//print this message later 
+			response.sendRedirect("regularUser.jsp");
+		}
+		else{
+			fd.getData(customer_id, table_name);
+			response.sendRedirect("regularUser.jsp");
 		}
 		
 		

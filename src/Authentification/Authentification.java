@@ -27,11 +27,7 @@ public class Authentification {
 		
 		return false;
 	}
-	/**
-	 * parameters = [
-	 * @param parameters
-	 * @return
-	 */
+
 
 	public static boolean register(String username, String name, String surname, String password, String tenant, String email) {
 	
@@ -78,27 +74,7 @@ public class Authentification {
 		return false;
 	}
 	
-	public String getTable(String username){
-		
-		String table = "";
-		
-		QueryExecutor qe = new QueryExecutor();
-		
-		String query = "SELECT Table_name FROM client WHERE Username='" + username + "'";
-		ResultSet rs = null;
-		
-		try{
-			rs = qe.executeQuery(query);
-			if(rs.next()){
-				table = rs.getString(1);
-			}
-			
-		}catch(Exception ex){
-			System.out.println(ex);
-		}
-		
-		return table;
-	}
+	
 	
 	
 	
