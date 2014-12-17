@@ -1,5 +1,10 @@
 package Util;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import DB.QueryExecutor;
 import DB.DBConnector;
 
@@ -29,41 +34,50 @@ public class FinancialData {
 		return table_name;
 	}
 	
-
-	public String getData(String CID, String table_name){	//get financial data
-		
-		String content = "";
+	
+	
+	public static ArrayList<Customer> getData(String CID, String table_name){
 		
 		QueryExecutor qe = new QueryExecutor();
 		String query = "SELECT * FROM "+ table_name + " WHERE CID='" + CID + "'" + "ORDER BY Date DESC";
 		
 		ResultSet rs = null;
 		
+		ArrayList<Customer> customers = new ArrayList<Customer>();
+		
 		try{
 			rs = qe.executeQuery(query);
 			
-			ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-			int columnsNumber = rsmd.getColumnCount();
-			
 			while(rs.next()){
-				 for (int i = 1; i <= columnsNumber; i++) {
-			            if (i > 1){
-			            System.out.print(", ");
-			            String columnValue = rs.getString(i);
-			            System.out.println(columnValue + " " + rsmd.getColumnName(i));
-			            }
-			        }
-			        System.out.println("");
-				
+				Customer customer = new Customer();
+				customer.setCID(rs.getInt("CID"));
+				customer.setSF(rs.getInt("SF"));
+				customer.setRF(rs.getInt("RF"));
+				customer.setSA(rs.getFloat("SA"));
+				customer.setRA(rs.getFloat("RA"));
+				customer.setDate(rs.getString("Date"));
+				customers.add(customer);
 			}
+			
+			
+			/*
+			for(int i = 0; i <= customers.size(); i++){
+				System.out.println(customers.get(i).getCID());
+				System.out.println(customers.get(i+1).getSF());
+				System.out.println(customers.get(i+2).getRF());
+				System.out.println(customers.get(i+3).getSA());
+				System.out.println(customers.get(i+4).getRA());
+				System.out.println(customers.get(i+5).getDate());
+			}
+			*/
 			
 		}catch(Exception ex){
 			System.out.println(ex);
 		}
 		
-		return content;
+		return customers;
 		
 	}
-	
+		
 
 }

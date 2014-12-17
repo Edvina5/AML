@@ -1,6 +1,55 @@
 @CHARSET "ISO-8859-1";
 
 
+.first-row{
+	margin-left: 40px;
+}
+
+.first-row th{
+	border: 1px solid grey;
+	width: 100px;
+	text-align: center;
+	background: #000;
+	color: #FFF;
+}
+
+
+.data-row{
+	margin-left: 40px;
+	height: 300px;
+	width: 720px;
+	overflow: auto;
+}
+
+
+.data-row td{
+	border: 1px solid grey;
+	width: 100px;
+	text-align: center;
+	background: #FFF;
+	display: table-cell;
+	text-align: center;
+	
+}
+
+
+
+
+.data-row tr:hover > td{
+	background-color: #B7DDF2;
+}
+
+
+
+#cid-error{
+	padding: 5px;
+}
+
+#cid-error p{
+	
+	color: red;
+}
+
 
 .form-div {
 	width: 400px;
@@ -8,6 +57,7 @@
 }
 
 .user-form {
+	margin-bottom: 50px;
 	width: 400px;
 	margin-left: 40px;
 }

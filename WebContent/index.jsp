@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -16,7 +19,7 @@
 			<a class="navbar-brand" href="#">AML Application</a>
 		</nav>
 		
-		<div id="credentials_error" class="error">
+		<div id="cid-error" >
 			<% String username = (String) session.getAttribute("credentials");
 				session.removeAttribute("credentials");
 			   String message = (String) session.getAttribute("message");
@@ -27,7 +30,7 @@
 			<% 	
 			} else if (message != null) {  //Close if bracket
 			%>
-			 <%= message  %>
+			 <%=  message  %>
 			<% }%>
 			
 		</div>
@@ -42,10 +45,11 @@
 						<label>Password:</label>
 						<input class="form-control" type="password" name="password">
 					</div>
-					<label>Group:</label>
+					<label>Tenant:</label>
 					<select name="Group" class="form-control">
-		    			<option value="UCD">UCD</option>
-		   				<option value="AIB">AIB</option>
+				    		<option value="UCD">UCD	</option>
+				    		<option value="UCD">AIB	</option>
+			   			 
 					</select>
 					<br>
 						

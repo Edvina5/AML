@@ -3,6 +3,7 @@ import java.sql.SQLException;
 
 import DB.QueryExecutor;
 import DB.DBConnector;
+import Util.FinancialData;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.ResultSet;;
@@ -75,7 +76,15 @@ public class Authentification {
 	}
 	
 	
+	public static boolean customerExists(String CID, String table_name){
 	
+		if(FinancialData.getData(CID, table_name).isEmpty()){
+			return false;
+		}else{
+			return true;
+		}
+	
+	}
 	
 	
 	

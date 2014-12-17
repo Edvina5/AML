@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="C:/Users/Edvinas/Documents/Project/Libraries/weka-3.7.3.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Edvinas/Documents/Project/Libraries/som/SelfOrganizingMap.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Edvinas/Documents/Project/Libraries/poi-3.10.1/poi-3.10.1-20140818.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Edvinas/Documents/Project/Libraries/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

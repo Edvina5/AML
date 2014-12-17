@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Util.Other;
 import Authentification.Authentification;
 
 /**
@@ -38,6 +39,8 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String group = request.getParameter("Group");
+		
+		
 		
 		//Check if login fields are not empty
 		if(username.isEmpty() || password.isEmpty()) {
