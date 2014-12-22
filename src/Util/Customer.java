@@ -1,12 +1,14 @@
 package Util;
 
+import java.math.BigDecimal;
+
 public class Customer {
 	
 	private int cid;
 	private int sf;
 	private int rf;
-	private float sa;
-	private float ra;
+	BigDecimal sa = new BigDecimal("0");
+	BigDecimal ra = new BigDecimal("0");
 	private String date;
 	
 	
@@ -34,19 +36,19 @@ public class Customer {
 		this.rf = rf;
 	}
 	
-	public float getSA(){
+	public BigDecimal getSA(){
 		return sa;
 	}
 	
-	public void setSA(float sa){
+	public void setSA(BigDecimal sa){
 		this.sa = sa;
 	}
 	
-	public float getRA(){
+	public BigDecimal getRA(){
 		return ra;
 	}
 	
-	public void setRA(float ra){
+	public void setRA(BigDecimal ra){
 		this.ra = ra;
 	}
 	
@@ -59,6 +61,4 @@ public class Customer {
 	}
 	
 	
-
-
 }

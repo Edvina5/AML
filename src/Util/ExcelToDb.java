@@ -1,12 +1,16 @@
 package Util;
 
 import java.io.FileInputStream;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Row;
+
 import com.mysql.jdbc.PreparedStatement;
+
 import DB.DBConnector;
 
 public class ExcelToDb {
@@ -15,9 +19,12 @@ public class ExcelToDb {
 			
 			try{
 				
+				BigDecimal sa = new BigDecimal("0");
+				BigDecimal ra = new BigDecimal("0");		
+				
 				DBConnector.connect().setAutoCommit(false);;
 				PreparedStatement prs = null;
-				FileInputStream input = new FileInputStream("MR_01.xls");
+				FileInputStream input = new FileInputStream("PG_01.xls");
 				POIFSFileSystem fs = new POIFSFileSystem( input );
 				HSSFWorkbook wb = new HSSFWorkbook(fs);
 				HSSFSheet sheet = wb.getSheetAt(0);
@@ -27,8 +34,10 @@ public class ExcelToDb {
 					int cid = (int) row.getCell(0).getNumericCellValue();
 					int sf = (int) row.getCell(1).getNumericCellValue();
 					int rf = (int) row.getCell(2).getNumericCellValue();
-					int sa = (int) row.getCell(3).getNumericCellValue();
-					int ra = (int) row.getCell(4).getNumericCellValue();
+					sa = (new BigDecimal(row.getCell(3).getNumericCellValue()));
+					sa = sa.setScale(2, BigDecimal.ROUND_HALF_UP);
+					ra = (new BigDecimal(row.getCell(4).getNumericCellValue()));
+					ra = ra.setScale(2, BigDecimal.ROUND_HALF_UP);
 					java.util.Date date = row.getCell(5).getDateCellValue();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 					String sdate = sdf.format(date).toString();
@@ -37,7 +46,6 @@ public class ExcelToDb {
 					prs = (PreparedStatement) DBConnector.connect().prepareStatement(query);
 					prs.execute();
 					System.out.println("Import rows " + i);
-					
 				}
 				prs.close();
 				input.close();

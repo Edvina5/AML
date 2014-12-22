@@ -53,8 +53,8 @@ public class FinancialData {
 				customer.setCID(rs.getInt("CID"));
 				customer.setSF(rs.getInt("SF"));
 				customer.setRF(rs.getInt("RF"));
-				customer.setSA(rs.getFloat("SA"));
-				customer.setRA(rs.getFloat("RA"));
+				customer.setSA(rs.getBigDecimal("SA"));
+				customer.setRA(rs.getBigDecimal("RA"));
 				customer.setDate(rs.getString("Date"));
 				customers.add(customer);
 			}
