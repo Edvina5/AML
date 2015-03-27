@@ -2,13 +2,6 @@ package WekaWorkbench;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.text.SimpleDateFormat;
-
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.ResultSet;
-
-import DB.DBConnector;
-import DB.QueryExecutor;
 import weka.clusterers.SimpleKMeans;
 import weka.core.Instances;
 import weka.experiment.InstanceQuery;
@@ -18,14 +11,10 @@ public class Kmeans {
 	public static void main(String[] args) throws Exception{
 		
 		
-		String queries = "SELECT CID,SF,RF,SA,RA,Date FROM table_02;";
+		String queries = "SELECT SF,RF,SA,RA FROM table_01;";
 		
-		
-		QueryExecutor qe = new QueryExecutor();
-		ResultSet rs = null;
 		try{	
 			
-			rs = qe.executeQuery(queries);
 			
 			InstanceQuery query = new InstanceQuery();
 			query.setDatabaseURL("jdbc:mysql://localhost:3306/userlogindb");
@@ -35,26 +24,40 @@ public class Kmeans {
 			Instances data = query.retrieveInstances();
 			
 			SimpleKMeans kmeans = new SimpleKMeans();
-			kmeans.setNumClusters(2);
+			kmeans.setNumClusters(5);
 			kmeans.buildClusterer(data);
 			
 		
 			BufferedWriter out = new BufferedWriter(new FileWriter("file.txt"));
-			
+			BufferedWriter out2 = new BufferedWriter(new FileWriter("file2.txt"));
 			//get cluster membership for each instance
 			for(int j = 0; j < data.numInstances(); j++){
 				
+				String isIt = "";
+				
 				int label = kmeans.clusterInstance(data.instance(j));
 				System.out.println(data.instance(j)+ " is in the cluster " + label );
-				out.write(data.instance(j) + "," + label + "\n");
+				
+				if(label == 4){
+					isIt = "Y";
+				}else{
+					isIt = "N";
+				}
+				
+				//out.write(data.instance(j)+ " " + label +"\n");
+				out2.write(data.instance(j) + "\n");
+				out.write( isIt +"\n");
 				
 			}
 			out.close();
+			out2.close();
 			
 			
 		}catch(Exception ex){
 			System.out.println(ex);
 		}
+		
+		
 		
 		
 		

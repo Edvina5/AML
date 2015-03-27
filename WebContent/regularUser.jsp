@@ -79,7 +79,7 @@
 				    <c:forEach items="${data}" var="user">
 				        <tr>
 				        	<td>
-				        		<input type="checkbox" name="rowSelector" value="unchecked"/>
+				        		<input type="checkbox" name="rowSelector" value="${user.getCID()} ${user.getSF()} ${user.getRF()} ${user.getSA()} ${user.getRA()} ${user.getDate()}"/>
 				        	</td>
 				            <td><c:out value="${user.getCID()}"/></td>
 				            <td><c:out value="${user.getSF()}"/></td>

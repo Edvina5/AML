@@ -14,6 +14,19 @@
 }
 
 
+.first-row2{
+	margin-top: 60px;
+	margin-left: 60px;
+}
+
+.first-row2 th{
+	border: 1px solid grey;
+	width: 500px;
+	text-align: center;
+	background: #000;
+	color: #FFF;
+}
+
 .data-row{
 	margin-left: 40px;
 	height: 300px;
@@ -21,9 +34,34 @@
 	overflow: auto;
 }
 
+.data-row2{
+	margin-left: 60px;
+	height: 300px;
+	width: 900px;
+	overflow: auto;
+}
+
 .data-row td{
 	border: 1px solid grey;
 	width: 116px;
+	text-align: center;
+	background: #FFF;
+	display: table-cell;
+	text-align: center;
+	
+}
+
+
+
+
+.data-row2 tr:hover > td{
+	background-color: #B7DDF2;
+}
+
+
+.data-row2 td{
+	border: 1px solid grey;
+	width: 500px;
 	text-align: center;
 	background: #FFF;
 	display: table-cell;

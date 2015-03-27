@@ -1,7 +1,6 @@
 package Util;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,7 +35,7 @@ public class Normalize {
 		Normalize norm = new Normalize();
 		
 		ArrayList<Integer> cid = new ArrayList<Integer>();
-		ResultSet rs = norm.getAllData("table_03");
+		ResultSet rs = norm.getAllData("table_01");
 		
 		while(rs.next()){
 			cid.add(rs.getInt("CID"));
@@ -51,7 +50,7 @@ public class Normalize {
 		Normalize norm = new Normalize();
 		
 		ArrayList<Integer> label = new ArrayList<Integer>();
-		ResultSet rs = norm.getAllData("table_03");
+		ResultSet rs = norm.getAllData("table_01");
 		
 		while(rs.next()){
 			label.add(rs.getInt("Label"));
@@ -65,7 +64,7 @@ public class Normalize {
 		Normalize norm = new Normalize();
 		
 		ArrayList<String> date = new ArrayList<String>();
-		ResultSet rs = norm.getAllData("table_03");
+		ResultSet rs = norm.getAllData("table_01");
 		
 		while(rs.next()){
 			date.add(rs.getString("Date"));
@@ -81,7 +80,7 @@ public class Normalize {
 	
 		ArrayList<BigDecimal> sf = new ArrayList<BigDecimal>();
 		
-		ResultSet rs = norm.getAllData("table_03");
+		ResultSet rs = norm.getAllData("table_01");
 		
 		while(rs.next()){
 			sf.add(rs.getBigDecimal("SF"));
@@ -97,7 +96,7 @@ public class Normalize {
 	
 		ArrayList<BigDecimal> rf = new ArrayList<BigDecimal>();
 		
-		ResultSet rs = norm.getAllData("table_03");
+		ResultSet rs = norm.getAllData("table_01");
 		
 		while(rs.next()){
 			rf.add(rs.getBigDecimal("RF"));
@@ -113,7 +112,7 @@ public class Normalize {
 	
 		ArrayList<BigDecimal> ra = new ArrayList<BigDecimal>();
 		
-		ResultSet rs = norm.getAllData("table_03");
+		ResultSet rs = norm.getAllData("table_01");
 		
 		while(rs.next()){
 			ra.add(rs.getBigDecimal("RA"));
@@ -128,7 +127,7 @@ public class Normalize {
 
 		ArrayList<BigDecimal> sa = new ArrayList<BigDecimal>();
 		
-		ResultSet rs = norm.getAllData("table_03");
+		ResultSet rs = norm.getAllData("table_01");
 		
 		while(rs.next()){
 			sa.add(rs.getBigDecimal("SA"));
@@ -304,7 +303,7 @@ public class Normalize {
 		ArrayList<BigDecimal> SA = norm.normSA();
 		ArrayList<BigDecimal> RA = norm.normRA();
 		ArrayList<String> DATE = norm.getDate();
-		ArrayList<Integer> LABEL = norm.getLabel();
+		//ArrayList<Integer> LABEL = norm.getLabel();
 		
 		for(i = 0; i < CID.size(); i++){
 			cid = CID.get(i);
@@ -313,9 +312,9 @@ public class Normalize {
 			sa = SA.get(i);
 			ra = RA.get(i);
 			date = DATE.get(i);
-			label = LABEL.get(i);
+			//label = LABEL.get(i);
 			
-			String query = "INSERT INTO "+table_name+" VALUES('"+cid+"','"+sf+"', '"+rf+"', '"+sa+"', '"+ra+"', '"+date+"', '"+label+"')";
+			String query = "INSERT INTO "+table_name+" VALUES('"+cid+"','"+sf+"', '"+rf+"', '"+sa+"', '"+ra+"', '"+date+"')";
 			prs = (PreparedStatement) DBConnector.connect().prepareStatement(query);
 			prs.execute();
 			System.out.println("Import rows " + i);

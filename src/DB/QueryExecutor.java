@@ -17,12 +17,7 @@ public class QueryExecutor {
 		this.con = DBConnector.connect();
 	}
 	
-	/**
-	 * Execute an SQL query
-	 * @param query
-	 * @return Result Set object.
-	 * @throws SQLException
-	 */
+
 	public ResultSet executeQuery(String query) throws SQLException {
 		Statement st = (Statement) con.createStatement();
 		ResultSet rs = (ResultSet) st.executeQuery(query);

@@ -24,7 +24,7 @@ public class ExcelToDb {
 				
 				DBConnector.connect().setAutoCommit(false);
 				PreparedStatement prs = null;
-				FileInputStream input = new FileInputStream("alldata.xls");
+				FileInputStream input = new FileInputStream("table3.xls");
 				POIFSFileSystem fs = new POIFSFileSystem( input );
 				HSSFWorkbook wb = new HSSFWorkbook(fs);
 				HSSFSheet sheet = wb.getSheetAt(0);
@@ -39,11 +39,11 @@ public class ExcelToDb {
 					ra = (new BigDecimal(row.getCell(4).getNumericCellValue()));
 					ra = ra.setScale(2, BigDecimal.ROUND_HALF_UP);
 					java.util.Date date = row.getCell(5).getDateCellValue();
-					int label = (int) row.getCell(6).getNumericCellValue();
+					String sus =  row.getCell(6).getStringCellValue();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 					String sdate = sdf.format(date).toString();
 					
-					String query = "INSERT INTO table_03 VALUES('"+cid+"','"+sf+"', '"+rf+"', '"+sa+"', '"+ra+"', '"+sdate+"', '"+label+"')";
+					String query = "INSERT INTO table_03 VALUES('"+cid+"','"+sf+"', '"+rf+"', '"+sa+"', '"+ra+"', '"+sdate+"', '"+sus+"')";
 					prs = (PreparedStatement) DBConnector.connect().prepareStatement(query);
 					prs.execute();
 					System.out.println("Import rows " + i);
